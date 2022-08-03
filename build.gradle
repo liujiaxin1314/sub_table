@@ -1,0 +1,43 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'com.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    //    数据库与多数据源配置
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.3.4'
+    compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version: '1.2.8'
+    compile group: 'com.baomidou', name: 'dynamic-datasource-spring-boot-starter', version: '3.1.1'
+    compile "org.springframework.boot:spring-boot-starter-web:2.7.2"
+    compile "org.springframework.boot:spring-boot-starter-tomcat:2.7.2"
+    compile "org.springframework.boot:spring-boot-starter-aop:2.7.2"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf:2.7.2"
+    compile "org.springframework.boot:spring-boot-devtools:2.7.2"
+    
+    compileOnly  'org.projectlombok:lombok:1.18.14'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.14'
+    //shardingsphere start
+//    compile 'io.shardingsphere:sharding-jdbc-spring-boot-starter:3.1.0'
+//    compile 'io.shardingsphere:sharding-jdbc-spring-namespace:3.1.0'
+    compile 'org.apache.shardingsphere:shardingsphere-jdbc-core-spring-boot-starter:5.1.0'
+    
+    compile 'org.apache.commons:commons-lang3:3.7'
+    runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
